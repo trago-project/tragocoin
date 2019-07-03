@@ -3,7 +3,7 @@
 # Tragocoin Core staging tree 0.10.0.1"
 
 
-| [Website](https://www.tragocoin.com) | [Exchange](https://www.tragocoin.com) | [Block Explorer](http://explorer.tragocoin.com/) | [Forum BitcoinTalk](https://bitcointalk.com/) |
+| [Website](https://www.tragocoin.com) | [Exchange](https://www.tragocoin.com) | [Block Explorer](http://explorer.tragocoin.com/) | [Forum BitcoinTalk](https://bitcointalk.org/index.php?topic=5161102/) |
 
 What is Tragocoin?
 ----------------
