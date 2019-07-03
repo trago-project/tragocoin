@@ -181,7 +181,7 @@ For in-depth description of Sparknet and how to use Tragocoin for interacting wi
 
 ### Mining
 
-Create an TRAGO Wallet. Setup your tragocoin.conf file. download miner software http://www.tragocoin.com 
+Create an TRAGO Wallet. Setup your tragocoin.conf file. download miner software https://www.tragocoin.com 
 
 Example commandline for cpuminer is:
 
@@ -192,7 +192,7 @@ Coinbase address is the wallet address you would like the reward to goto. Debug 
 
 ### Building a masternode
 
-Setting up a masternode requires a basic understanding of Linux and blockchain technology, as well as an ability to follow instructions closely. It also requires regular maintenance and careful security. Full guide instructions setup : http://www.tragocoin.com/page/setup
+Setting up a masternode requires a basic understanding of Linux and blockchain technology, as well as an ability to follow instructions closely. It also requires regular maintenance and careful security. Full guide instructions setup : https://www.tragocoin.com/page/setup
 
 
 Development Process
