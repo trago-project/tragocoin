@@ -1,6 +1,6 @@
 ![Tragocoin Logo](https://github.com/trago-project/tragocoin/raw/master/logo.png)
 
-# Tragocoin Core staging tree 0.10.0.1"
+# Tragocoin Core staging tree 0.10.0.2"
 
 
 | [Website](https://www.tragocoin.com) | [Exchange](https://www.tragocoin.com) | [Block Explorer](http://explorer.tragocoin.com/) | [Forum BitcoinTalk](https://bitcointalk.org/index.php?topic=5161102/) |
