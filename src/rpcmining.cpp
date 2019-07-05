@@ -215,9 +215,10 @@ UniValue setgenerate(const UniValue& params, bool fHelp)
 
     if (Params().MineBlocksOnDemand())
         throw JSONRPCError(RPC_METHOD_NOT_FOUND, "Use the generate method instead of setgenerate on this network");
-
-    if (IsInitialBlockDownload())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Tragocoin is downloading blocks...");
+    if(sporkManager.IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT)) {
+       if (IsInitialBlockDownload())
+           throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Tragocoin is downloading blocks...");
+    }
 
     bool fGenerate = true;
     if (params.size() > 0)
@@ -470,11 +471,13 @@ UniValue getblocktemplate(const UniValue& params, bool fHelp)
     if (vNodes.empty())
         throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "tragocoin Core is not connected!");
 
-    if (IsInitialBlockDownload())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "tragocoin Core is downloading blocks...");
+    if(sporkManager.IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT)) {
+       if (IsInitialBlockDownload())
+          throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "tragocoin Core is downloading blocks...");
 
-    if (!masternodeSync.IsSynced())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "tragocoin Core is syncing with network...");
+       if (!masternodeSync.IsSynced())
+          throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "tragocoin Core is syncing with network...");
+    }
 
     static unsigned int nTransactionsUpdatedLast;
 

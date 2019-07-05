@@ -264,7 +264,7 @@ void CMasternodeSync::ProcessTick()
             /*
                 Resync if we lost all masternodes from sleep/wake or failed to sync originally
             */
-            if(nMnCount == 0) {
+            if(nMnCount == 0 && sporkManager.IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT)) {
                 LogPrintf("CMasternodeSync::ProcessTick -- WARNING: not enough data, restarting sync\n");
                 Reset();
             } else {
