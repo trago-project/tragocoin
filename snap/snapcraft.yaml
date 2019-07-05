@@ -1,0 +1,93 @@
+name: tragocoin
+version: '0.1'
+summary: tragocoin cryptocurrency wallet
+description: |
+  tragocoin is a fully decentralised cryptocurrency built on the premise of providing anonymity, speed, fair mining by being ASIC-resistant and reliability by the usage of Masternodes.
+icon: snap/gui/tragocoin-qt.png
+grade: stable
+confinement: strict
+
+apps:
+  tragocoin-cli:
+    command: bin/tragocoin-cli
+    plugs:
+      - network
+
+  tragocoind:
+    command: bin/tragocoind
+    plugs:
+      - network
+      - network-bind
+
+  tragocoin-tx:
+    command: bin/tragocoin-tx
+    plugs:
+      - network
+
+  tragocoin-qt:
+    command: desktop-launch $SNAP/bin/tragocoin-qt
+    desktop: tragocoin-qt.desktop
+    plugs:
+      - desktop
+      - home
+      - network
+      - network-bind
+      - x11
+
+parts:
+  ppa:
+    plugin: nil
+    override-pull: |
+      add-apt-repository -yu ppa:bitcoin/bitcoin
+      apt install -y libdb4.8-dev libdb4.8++-dev
+    build-packages:
+      - software-properties-common
+  tragocoin:
+    plugin: autotools
+    after:
+      - ppa
+      - desktop-qt5
+    source: https://github.com/tragocoinCore/tragocoin.git
+    source-depth: 1
+    configflags: [--disable-tests, --disable-bench]
+    override-build: |
+      snapcraftctl build
+      cp contrib/debian/tragocoin-qt.desktop.desktop $SNAPCRAFT_PART_INSTALL/tragocoin-qt.desktop
+      sed -i -e 's/Icon=tragocoin128/Icon=${SNAP}\/meta\/gui\/tragocoin-qt.png/; s/tragocoin-qt.desktop/tragocoin Core/' $SNAPCRAFT_PART_INSTALL/tragocoin-qt.desktop
+    build-packages:
+      - bsdmainutils
+      - libboost-chrono-dev
+      - libboost-filesystem-dev
+      - libboost-program-options-dev
+      - libboost-system-dev
+      - libboost-test-dev
+      - libboost-thread-dev
+      - libevent-dev
+      - libminiupnpc-dev
+      - libprotobuf-dev
+      - libqrencode-dev
+      - libqt5core5a
+      - libqt5dbus5
+      - libqt5gui5
+      - libssl-dev
+      - libzmq3-dev
+      - pkg-config
+      - protobuf-compiler
+      - qttools5-dev
+      - qttools5-dev-tools
+    stage-packages:
+      - libatk-adaptor
+      - libboost-chrono1.58.0
+      - libboost-program-options1.58.0
+      - libboost-thread1.58.0
+      - libcanberra-gtk-module
+      - libcanberra-gtk3-module
+      - libdb4.8
+      - libdb4.8++
+      - libevent-2.0-5
+      - libevent-pthreads-2.0-5
+      - libgail-common
+      - libminiupnpc10
+      - libprotobuf9v5
+      - libqrencode3
+      - libzmq5

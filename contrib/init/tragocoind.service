@@ -1,0 +1,22 @@
+[Unit]
+Description=tragocoin's distributed currency daemon
+After=network.target
+
+[Service]
+User=tragocoincore
+Group=tragocoincore
+
+Type=forking
+PIDFile=/var/lib/tragocoind/tragocoind.pid
+ExecStart=/usr/bin/tragocoind -daemon -pid=/var/lib/tragocoind/tragocoind.pid \
+-conf=/etc/tragocoincore/tragocoin.conf -datadir=/var/lib/tragocoind -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+usr/local/bin/tragocoin-qt usr/bin
+share/pixmaps/tragocoin32.xpm usr/share/pixmaps
+share/pixmaps/tragocoin16.xpm usr/share/pixmaps
+share/pixmaps/tragocoin128.png usr/share/pixmaps
+debian/tragocoin-qt.desktop usr/share/applications
+debian/tragocoin-qt.protocol usr/share/kde4/services/
